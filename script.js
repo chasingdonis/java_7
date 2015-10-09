@@ -33,12 +33,17 @@ document.getElementById('BtnDonate').addEventListener('click', function(){
    var donateAm = document.createElement('H3');
    newPara.appendChild(donateAm);
     
-   if (donateP < 100) {
+   if (donateP !== null && donateP < 100) {
    donateNote = document.createTextNode('Thank you for your donation of $' + donateP);
-   donateAm.appendChild(donateNote);}
-    if (donateP >= 100){
+   donateAm.appendChild(donateNote);
+   } else if (donateP >= 100){
     donateNote = document.createTextNode('Thank you for your very generous donation');
-    donateAm.appendChild(donateNote);}
+    donateAm.appendChild(donateNote);
+    donateAm.setAttribute("class", "changeCo");
+    } else if (donateP == null){
+    donateNote = document.createTextNode('You have not entered a number yet');
+    donateAm.appendChild(donateNote);
+   }  
 });
 
 document.getElementById('BtnChurchill').addEventListener('click', function(){
@@ -103,6 +108,10 @@ document.getElementById('BtnGhandi').addEventListener('click', function(){
   if(speechesArray[1].year === newest){
     newPara.innerHTML +='This is the most recent speech on the page.<br>';
   }
+    
+    for (i=0; i< titleCh.length; i++){
+    titleCh[i].className = "generous-donation";
+    }
 });
 
 document.getElementById('BtnDemosthenes').addEventListener('click', function(){
@@ -133,4 +142,7 @@ document.getElementById('BtnDemosthenes').addEventListener('click', function(){
   if(speechesArray[2].year === newest){
     newPara.innerHTML +='This is the most recent speech on the page.<br><br>';
   }
+    for (i=0; i< titleCh.length; i++){
+    titleCh[i].className = "generous-donation";
+    }
 });
